@@ -24,7 +24,7 @@ in the `src/Makevars`.
 We can update the vendored copy of the source code with:
 
 ```bash
-VERSION=0.10.13
+VERSION=0.10.15
 url=https://github.com/igraph/igraph/releases/download/${VERSION}/igraph-${VERSION}.tar.gz
 curl -L ${url} > sources.tar.gz
 ```
