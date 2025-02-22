@@ -1,7 +1,7 @@
-Package: Rlibigraph
+Package: Rigraphlib
 Type: Package
-Version: 0.99.0
-Date: 2025-02-06
+Version: 0.99.1
+Date: 2025-02-22
 Title: igraph library as an R package
 License: GPL-3
 Authors@R: person("Aaron", "Lun", role=c("cre", "aut"), email="infinite.monkeys.with.keyboards@gmail.com")
@@ -21,7 +21,7 @@ VignetteBuilder: knitr
 biocViews:
     Clustering,
     GraphAndNetwork
-URL: https://github.com/libscran/Rlibigraph
-BugReports: https://github.com/libscran/Rlibigraph/issues
+URL: https://github.com/libscran/Rigraphlib
+BugReports: https://github.com/libscran/Rigraphlib/issues
 Encoding: UTF-8
 RoxygenNote: 7.3.2

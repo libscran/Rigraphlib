@@ -10,5 +10,5 @@
 #'
 #' @export
 pkgconfig <- function() {
-    system.file("lib", "libigraph.a", package="Rlibigraph", mustWork=TRUE)
+    system.file("lib", "libigraph.a", package="Rigraphlib", mustWork=TRUE)
 }

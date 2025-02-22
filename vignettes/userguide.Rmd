@@ -6,7 +6,7 @@ author:
 date: "Revised: September 20, 2024"
 output:
   BiocStyle::html_document
-package: biocmake
+package: Rigraphlib
 vignette: >
   %\VignetteIndexEntry{Using the igraph C library}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,7 +18,7 @@ require(knitr)
 opts_chunk$set(error=FALSE, message=FALSE, warning=FALSE)
 
 library(BiocStyle)
-self <- Biocpkg("Rlibigraph")
+self <- Biocpkg("Rigraphlib")
 ```
 
 # Overview
@@ -34,16 +34,16 @@ This also allows developers to access functionality that might yet not be availa
 Downstream package developers can use `r self` by adding:
 
 ```
-LinkingTo: Rlibigraph
+LinkingTo: Rigraphlib
 ```
 
 to their package `DESCRIPTION`, and setting:
 
 ```bash
-RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rlibigraph::pkgconfig()'")
+RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rigraphlib::pkgconfig()'")
 PKG_LIBS=$(RIGRAPH_LIBS)
 ```
-
+/
 in their `src/Makevars`.
 
 # Session information {-}
