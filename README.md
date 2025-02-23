@@ -9,17 +9,20 @@ It also allows developers to access functionality that might yet not be availabl
 For downstream package developers, use of **Rigraphlib** is as simple as adding:
 
 ```
-LinkingTo: Rigraphlib
+Imports: Rigraphlib
 ```
 
 to the `DESCRIPTION`, and setting:
 
 ```bash
-RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rigraphlib::pkgconfig()'")
-PKG_LIBS=$(RIGRAPH_LIBS)
+RIGRAPH_FLAGS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'cat(Rigraphlib::pkgconfig("PKG_CPPFLAGS"))')
+PKG_CPPFLAGS=$(RIGRAPH_FLAGS)
+RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'cat(Rigraphlib::pkgconfig("PKG_LIBS"))')
+PKG_LIBS=$(RIGRAPH_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) 
 ```
 
 in the `src/Makevars`.
+We use R's own BLAS and LAPACK libraries to avoid redundant recompilation of **igraph**'s vendored copies.
 
 We can update the vendored copy of the source code with:
 
