@@ -2,6 +2,8 @@
 #'
 #' Configure flags for compiling downstream packages.
 #'
+#' @param opt String specifying the \code{Makevars} option to print.
+#'
 #' @return Flags to add to the requested \code{opt} of the \code{Makevars} are printed to the screen.
 #'
 #' @author Aaron Lun

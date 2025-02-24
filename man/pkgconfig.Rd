@@ -4,16 +4,20 @@
 \alias{pkgconfig}
 \title{Configure compilation flags}
 \usage{
-pkgconfig()
+pkgconfig(opt = c("PKG_CPPFLAGS", "PKG_LIBS"))
+}
+\arguments{
+\item{opt}{String specifying the \code{Makevars} option to print.}
 }
 \value{
-String containing flags to add to \code{PKG_LIBS} of the \code{Makevars}.
+Flags to add to the requested \code{opt} of the \code{Makevars} are printed to the screen.
 }
 \description{
 Configure flags for compiling downstream packages.
 }
 \examples{
-pkgconfig()
+pkgconfig("PKG_CPPFLAGS")
+pkgconfig("PKG_LIBS")
 
 }
 \author{
