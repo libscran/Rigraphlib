@@ -3,7 +3,7 @@ title: Packaging the igraph C library
 author:
 - name: Aaron Lun
   email: infinite.monkeys.with.keyboards@gmail.com
-date: "Revised: September 20, 2024"
+date: "Revised: March 4, 2025"
 output:
   BiocStyle::html_document
 package: Rigraphlib
@@ -29,6 +29,8 @@ and cannot easily be modified to use the usual `r CRANpkg("igraph")` R package.
 By vendoring in the source code, we also reduce our susceptibility to out-of-release-schedule changes in results due to `r CRANpkg("igraph")` updates.
 This also allows developers to access functionality that might yet not be available from the R bindings.
 
+Currently, this package contains version 0.10.15 of the C **igraph** library.
+
 # Quick start
 
 Downstream package developers can use `r self` by adding:
@@ -40,9 +42,9 @@ Imports: Rigraphlib
 to their package `DESCRIPTION`, and setting:
 
 ```bash
-RIGRAPH_FLAGS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'cat(Rigraphlib::pkgconfig("PKG_CPPFLAGS"))')
+RIGRAPH_FLAGS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rigraphlib::pkgconfig("PKG_CPPFLAGS")')
 PKG_CPPFLAGS=$(RIGRAPH_FLAGS)
-RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'cat(Rigraphlib::pkgconfig("PKG_LIBS"))')
+RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rigraphlib::pkgconfig("PKG_LIBS")')
 PKG_LIBS=$(RIGRAPH_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) 
 ```
 

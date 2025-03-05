@@ -1,8 +1,7 @@
 # Static igraph libraries for R packages
 
-Builds the **igraph** static library for use in R/Bioconductor packages.
-This is primarily intended for R packages that wrap other C/C++ libraries that depend on the **igraph** C library
-and cannot easily be modified to use the usual R bindings to **igraph**.
+Builds the [**igraph**](https://igraph.org) static library for use in R/Bioconductor packages.
+This is primarily intended for R packages that wrap other C/C++ libraries that depend on the **igraph** C library and cannot easily be modified to use the usual **igraph** R package.
 By vendoring in the source code, we reduce our susceptibility to out-of-release-schedule changes in results due to **igraph** updates.
 It also allows developers to access functionality that might yet not be available from the R bindings.
 
@@ -15,9 +14,9 @@ Imports: Rigraphlib
 to the `DESCRIPTION`, and setting:
 
 ```bash
-RIGRAPH_FLAGS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'cat(Rigraphlib::pkgconfig("PKG_CPPFLAGS"))')
+RIGRAPH_FLAGS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rigraphlib::pkgconfig("PKG_CPPFLAGS")')
 PKG_CPPFLAGS=$(RIGRAPH_FLAGS)
-RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'cat(Rigraphlib::pkgconfig("PKG_LIBS"))')
+RIGRAPH_LIBS=$(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript" -e 'Rigraphlib::pkgconfig("PKG_LIBS")')
 PKG_LIBS=$(RIGRAPH_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) 
 ```
 

@@ -1,15 +1,14 @@
 Package: Rigraphlib
 Type: Package
-Version: 0.99.2
-Date: 2025-02-24
+Version: 0.99.3
+Date: 2025-03-04
 Title: igraph library as an R package
 License: GPL-3
 Authors@R: person("Aaron", "Lun", role=c("cre", "aut"), email="infinite.monkeys.with.keyboards@gmail.com")
 Description:
-    Vendors the igraph source code and builds it into a static library.
+    Vendors the igraph C source code and builds it into a static library.
     Other Bioconductor packages can link to libigraph.a in their own C/C++ code.
-    This is particularly useful for packages wrapping C/C++ libraries that depend on the igraph C library
-    and cannot be easily adapted to use the canonical R bindings to igraph.
+    This is intended for packages wrapping C/C++ libraries that depend on the igraph C library and cannot be easily adapted to use the igraph R package.
 LinkingTo:
     biocmake 
 Suggests:
