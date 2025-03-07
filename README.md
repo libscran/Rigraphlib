@@ -1,5 +1,10 @@
 # Static igraph libraries for R packages
 
+|Environment|Status|
+|---|---|
+|[BioC-release](https://bioconductor.org/packages/release/bioc/html/Rigraphlib.html)|[![Release OK](https://bioconductor.org/shields/build/release/bioc/Rigraphlib.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/Rigraphlib/)|
+|[BioC-devel](https://bioconductor.org/packages/devel/bioc/html/Rigraphlib.html)|[![Devel OK](https://bioconductor.org/shields/build/devel/bioc/Rigraphlib.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/Rigraphlib/)|
+
 Builds the [**igraph**](https://igraph.org) static library for use in R/Bioconductor packages.
 This is primarily intended for R packages that wrap other C/C++ libraries that depend on the **igraph** C library and cannot easily be modified to use the usual **igraph** R package.
 By vendoring in the source code, we reduce our susceptibility to out-of-release-schedule changes in results due to **igraph** updates.
