@@ -19,7 +19,7 @@ pkgconfig <- function(opt=c("PKG_CPPFLAGS", "PKG_LIBS")) {
         msg <- NULL
         for (choice in c("lib", "lib64")) {
             target <- system.file(choice, "libigraph.a", package="Rigraphlib")
-            if (!is.null(target)) {
+            if (target != "") {
                 msg <- shQuote(target)
                 break
             }
