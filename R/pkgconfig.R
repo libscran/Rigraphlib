@@ -14,10 +14,23 @@
 #' @export
 pkgconfig <- function(opt=c("PKG_CPPFLAGS", "PKG_LIBS")) {
     opt <- match.arg(opt)
+
     if (opt == "PKG_LIBS") {
-        msg <- shQuote(system.file("lib", "libigraph.a", package="Rigraphlib", mustWork=TRUE))
+        msg <- NULL
+        for (choice in c("lib", "lib64")) {
+            target <- system.file(choice, "libigraph.a", package="Rigraphlib")
+            if (!is.null(target)) {
+                msg <- shQuote(target)
+                break
+            }
+        }
+        if (is.null(msg)) {
+            stop("could not find the libigraph.a binary")
+        }
+
     } else {
         msg <- paste0("-I", shQuote(system.file("include", "igraph", package="Rigraphlib", mustWork=TRUE)))
     }
+
     cat(msg)
 }

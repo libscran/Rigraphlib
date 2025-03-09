@@ -1,7 +1,7 @@
 Package: Rigraphlib
 Type: Package
-Version: 0.99.3
-Date: 2025-03-04
+Version: 0.99.4
+Date: 2025-03-08
 Title: igraph library as an R package
 License: GPL-3
 Authors@R: person("Aaron", "Lun", role=c("cre", "aut"), email="infinite.monkeys.with.keyboards@gmail.com")
