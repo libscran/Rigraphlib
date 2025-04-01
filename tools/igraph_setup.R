@@ -44,7 +44,7 @@ options <- c(options,
 ######### Configuration ###########
 ###################################
 
-install_path <- "inst"
+install_path <- file.path("inst", "igraph")
 
 if (!file.exists(install_path)) {
     tmp_dir <- "_temp"
@@ -69,5 +69,6 @@ if (!file.exists(install_path)) {
         system2(cmake, c("--build", build_path, "--config", "Release"))
     }
 
+    dir.create("inst", showWarnings=FALSE)
     system2(cmake, c("--install", build_path), stderr=FALSE)
 }

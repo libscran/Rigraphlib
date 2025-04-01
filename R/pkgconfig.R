@@ -18,7 +18,7 @@ pkgconfig <- function(opt=c("PKG_CPPFLAGS", "PKG_LIBS")) {
     if (opt == "PKG_LIBS") {
         msg <- NULL
         for (choice in c("lib", "lib64")) {
-            target <- system.file(choice, "libigraph.a", package="Rigraphlib")
+            target <- system.file("igraph", choice, "libigraph.a", package="Rigraphlib")
             if (target != "") {
                 msg <- shQuote(target)
                 break
@@ -29,7 +29,7 @@ pkgconfig <- function(opt=c("PKG_CPPFLAGS", "PKG_LIBS")) {
         }
 
     } else {
-        msg <- paste0("-I", shQuote(system.file("include", "igraph", package="Rigraphlib", mustWork=TRUE)))
+        msg <- paste0("-I", shQuote(system.file("igraph", "include", "igraph", package="Rigraphlib", mustWork=TRUE)))
     }
 
     cat(msg)
