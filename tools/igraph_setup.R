@@ -41,7 +41,7 @@ options <- c(options,
 )
 
 ###################################
-######### Configuration ###########
+######### Running CMake ###########
 ###################################
 
 install_path <- file.path("inst", "igraph")
@@ -60,15 +60,22 @@ if (!file.exists(install_path)) {
         }
 
         options <- c(options, paste0("-DCMAKE_INSTALL_PREFIX=", install_path))
-        system2(cmake, c("-S", source_path, "-B", build_path, options), stderr=FALSE)
+        if (system2(cmake, c("-S", source_path, "-B", build_path, options)) != 0) {
+            stop("failed to configure the igraph library")
+        }
     }
 
     if (.Platform$OS.type != "windows") {
-        system2(cmake, c("--build", build_path))
+        status <- system2(cmake, c("--build", build_path))
     } else {
-        system2(cmake, c("--build", build_path, "--config", "Release"))
+        status <- system2(cmake, c("--build", build_path, "--config", "Release"))
+    }
+    if (status != 0) {
+        stop("failed to build the igraph library")
     }
 
     dir.create("inst", showWarnings=FALSE)
-    system2(cmake, c("--install", build_path), stderr=FALSE)
+    if (system2(cmake, c("--install", build_path), stderr=FALSE) != 0) {
+        stop("failed to install the igraph library")
+    }
 }
