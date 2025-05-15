@@ -20,7 +20,6 @@ VignetteBuilder: knitr
 biocViews:
     Clustering,
     GraphAndNetwork
-NeedsCompilation: yes
 URL: https://github.com/libscran/Rigraphlib
 BugReports: https://github.com/libscran/Rigraphlib/issues
 Encoding: UTF-8
