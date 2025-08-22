@@ -65,11 +65,7 @@ if (!file.exists(install_path)) {
         }
     }
 
-    if (.Platform$OS.type != "windows") {
-        status <- system2(cmake, c("--build", build_path))
-    } else {
-        status <- system2(cmake, c("--build", build_path, "--config", "Release"))
-    }
+    status <- system2(cmake, c("--build", build_path))
     if (status != 0) {
         stop("failed to build the igraph library")
     }
