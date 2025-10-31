@@ -47,18 +47,10 @@ options <- c(options,
 install_path <- file.path("inst", "igraph")
 
 if (!file.exists(install_path)) {
-    tmp_dir <- "_temp"
-    dir.create(tmp_dir, recursive=TRUE, showWarnings=FALSE)
-    build_path <- file.path(tmp_dir, "build")
+    build_path <- "_build"
 
     if (!file.exists(build_path)) {
-        source_path <- file.path(tmp_dir, "source")
-        if (!file.exists(source_path)) {
-            stopifnot(untar("sources.tar.gz", exdir=tmp_dir) == 0)
-            first <- list.files(tmp_dir, pattern="^igraph-")
-            file.rename(file.path(tmp_dir, first), source_path)
-        }
-
+        source_path <- "igraph"
         options <- c(options, paste0("-DCMAKE_INSTALL_PREFIX=", install_path))
         if (system2(cmake, c("-S", source_path, "-B", build_path, options)) != 0) {
             stop("failed to configure the igraph library")

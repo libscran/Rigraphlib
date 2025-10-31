@@ -31,7 +31,11 @@ We use R's own BLAS and LAPACK libraries to avoid redundant recompilation of **i
 We can update the vendored copy of the source code with:
 
 ```bash
-VERSION=0.10.15
+VERSION=1.0.0
 url=https://github.com/igraph/igraph/releases/download/${VERSION}/igraph-${VERSION}.tar.gz
 curl -L ${url} > sources.tar.gz
+
+tar -xvf sources.tar.gz
+rm -rf igraph
+mv igraph-${VERSION} igraph
 ```

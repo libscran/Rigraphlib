@@ -1,2 +1,3 @@
 ^README\.md$
-^_temp$
+^sources\.tar\.gz$
+^_build$

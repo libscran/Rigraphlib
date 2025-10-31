@@ -3,6 +3,6 @@
 *.a
 *.o
 *.html
-_temp
-inst/include
-inst/lib
+_build
+inst/igraph
+sources.tar.gz

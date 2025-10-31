@@ -1,0 +1,94 @@
+Two empty graphs:
+{
+  0: ( )
+}
+
+Two singleton graphs:
+{
+  0: ( 0 )
+}
+
+Empty and singleton graphs:
+{
+}
+
+Two cycles:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 0 4 3 2 1 )
+  2: ( 1 0 4 3 2 )
+  3: ( 1 2 3 4 0 )
+  4: ( 2 1 0 4 3 )
+  5: ( 2 3 4 0 1 )
+  6: ( 3 2 1 0 4 )
+  7: ( 3 4 0 1 2 )
+  8: ( 4 0 1 2 3 )
+  9: ( 4 3 2 1 0 )
+}
+
+Two directed cycles:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 1 2 3 4 0 )
+  2: ( 2 3 4 0 1 )
+  3: ( 3 4 0 1 2 )
+  4: ( 4 0 1 2 3 )
+}
+
+Two cycles where node parity should be equal:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 4 3 2 1 0 )
+}
+
+Two cycles where edge parity should be equal:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 0 4 3 2 1 )
+}
+
+Two cycles with only one vertex coloring:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 0 4 3 2 1 )
+  2: ( 1 0 4 3 2 )
+  3: ( 1 2 3 4 0 )
+  4: ( 2 1 0 4 3 )
+  5: ( 2 3 4 0 1 )
+  6: ( 3 2 1 0 4 )
+  7: ( 3 4 0 1 2 )
+  8: ( 4 0 1 2 3 )
+  9: ( 4 3 2 1 0 )
+}
+
+Two cycles with vertex coloring:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 4 3 2 1 0 )
+}
+
+Two cycles with edge coloring:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 0 4 3 2 1 )
+}
+
+Two cycles where node of graph 1 should not be 3 higher than node of graph 2:
+{
+  0: ( 0 1 2 3 4 )
+  1: ( 1 0 4 3 2 )
+  2: ( 1 2 3 4 0 )
+  3: ( 2 1 0 4 3 )
+  4: ( 2 3 4 0 1 )
+  5: ( 4 0 1 2 3 )
+  6: ( 4 3 2 1 0 )
+}
+
+Two cycles with different directedness:
+{
+}
+
+Graph with loop edges:
+{
+}
+
