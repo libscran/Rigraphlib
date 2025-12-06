@@ -38,4 +38,8 @@ curl -L ${url} > sources.tar.gz
 tar -xvf sources.tar.gz
 rm -rf igraph
 mv igraph-${VERSION} igraph
+
+rm -rf igraph/tests 
+rm -rf igraph/doc
+rm -rf igraph/examples
 ```

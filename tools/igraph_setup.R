@@ -51,7 +51,12 @@ if (!file.exists(install_path)) {
 
     if (!file.exists(build_path)) {
         source_path <- "igraph"
-        options <- c(options, paste0("-DCMAKE_INSTALL_PREFIX=", install_path))
+        options <- c(
+            options,
+            paste0("-DCMAKE_INSTALL_PREFIX=", install_path),
+            "-DCMAKE_PROJECT_NAME=Rigraphlib" # set this to prevent CMake from including irrelevant directories.
+        )
+
         if (system2(cmake, c("-S", source_path, "-B", build_path, options)) != 0) {
             stop("failed to configure the igraph library")
         }
