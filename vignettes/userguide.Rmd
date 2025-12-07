@@ -51,6 +51,20 @@ PKG_LIBS=$(RIGRAPH_LIBS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS)
 in their `src/Makevars`.
 We use R's own BLAS and LAPACK libraries to avoid redundant recompilation of **igraph**'s vendored copies.
 
+# For R administrators
+
+If the `RIGRAPHLIB_PKG_CPPFLAGS` environment is set, its contents will be printed by `pkgconfig("PKG_CPPFLAGS")`.
+Similarly, if the `RIGRAPHLIB_PKG_LIBS` environment is set, its contents will be printed by `pkgconfig("PKG_LIBS")`.
+These take precedence over any other options or environment variables.
+
+If the `RIGRAPHLIB_USE_SYSTEM_LIBRARY` environment variable is set to 1,
+`pkgconfig()` will instead call `pkg-config igraph` to determine the relevant flags to link to the system **igraph** installation.
+In addition, if this environment variable is set during `r self` installation,
+the vendored source code will not be compiled unless the `RIGRAPH_FORCE_BUILD` environment variable is set to 1.
+
+In both cases, the version of **igraph** referenced by any custom flags should be consistent with the version of the vendored **igraph** source.
+This ensures that downstream packages based on `r self` will build and run as expected.
+
 # Session information {-}
 
 ```{r}

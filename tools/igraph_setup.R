@@ -1,8 +1,14 @@
-cmake <- biocmake::find()
+if (Sys.getenv("RIGRAPHLIB_USE_SYSTEM_LIBRARY", "0") == "1") {
+    if (Sys.getenv("RIGRAPHLIB_FORCE_BUILD", "0") != "1") {
+        quit('no', status=0)
+    }
+}
 
 ###################################
 ######### Configuration ###########
 ###################################
+
+cmake <- biocmake::find()
 
 options <- biocmake::formatArguments(biocmake::configure(fortran.compiler=FALSE))
 options <- c(options, "-DIGRAPH_WARNINGS_AS_ERRORS=OFF")
