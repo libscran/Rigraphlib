@@ -12,6 +12,13 @@ if (Sys.getenv("RIGRAPHLIB_USE_SYSTEM_LIBRARY", "0") == "1") {
     }
 }
 
+# Quitting if the output directory already exists.
+# Only relevant to save time during development of this package.
+install_path <- file.path(getwd(), "inst", "igraph")
+if (file.exists(install_path)) {
+    quit('no', status=0)
+}
+
 ###################################
 ######### Configuration ###########
 ###################################
@@ -58,30 +65,26 @@ options <- c(options,
 ######### Running CMake ###########
 ###################################
 
-install_path <- file.path("inst", "igraph")
+build_path <- "_build"
 
-if (!file.exists(install_path)) {
-    build_path <- "_build"
+if (!file.exists(build_path)) {
+    source_path <- "igraph"
+    options <- c(
+        options,
+        paste0("-DCMAKE_INSTALL_PREFIX=", install_path),
+        "-DCMAKE_PROJECT_NAME=Rigraphlib" # set this to prevent CMake from including irrelevant directories.
+    )
 
-    if (!file.exists(build_path)) {
-        source_path <- "igraph"
-        options <- c(
-            options,
-            paste0("-DCMAKE_INSTALL_PREFIX=", install_path),
-            "-DCMAKE_PROJECT_NAME=Rigraphlib" # set this to prevent CMake from including irrelevant directories.
-        )
-
-        if (system2(cmake, c("-S", source_path, "-B", build_path, options)) != 0) {
-            stop("failed to configure the igraph library")
-        }
+    if (system2(cmake, c("-S", source_path, "-B", build_path, options)) != 0) {
+        stop("failed to configure the igraph library")
     }
+}
 
-    status <- system2(cmake, c("--build", build_path))
-    if (status != 0) {
-        stop("failed to build the igraph library")
-    }
+status <- system2(cmake, c("--build", build_path))
+if (status != 0) {
+    stop("failed to build the igraph library")
+}
 
-    if (system2(cmake, c("--install", build_path), stderr=FALSE) != 0) {
-        stop("failed to install the igraph library")
-    }
+if (system2(cmake, c("--install", build_path), stderr=FALSE) != 0) {
+    stop("failed to install the igraph library")
 }
