@@ -1,3 +1,11 @@
+dir.create("inst", showWarnings=FALSE)
+version.target <- file.path("inst", "IGRAPH_VERSION")
+if (!file.exists(version.target)) {
+    if (!file.copy(file.path("igraph", "IGRAPH_VERSION"), version.target)) {
+        stop("failed to copy IGRAPH_VERSION")
+    }
+}
+
 if (Sys.getenv("RIGRAPHLIB_USE_SYSTEM_LIBRARY", "0") == "1") {
     if (Sys.getenv("RIGRAPHLIB_FORCE_BUILD", "0") != "1") {
         quit('no', status=0)
@@ -73,7 +81,6 @@ if (!file.exists(install_path)) {
         stop("failed to build the igraph library")
     }
 
-    dir.create("inst", showWarnings=FALSE)
     if (system2(cmake, c("--install", build_path), stderr=FALSE) != 0) {
         stop("failed to install the igraph library")
     }

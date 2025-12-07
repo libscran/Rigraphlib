@@ -15,6 +15,21 @@ Flags to add to the requested \code{opt} of the \code{Makevars} are printed to t
 \description{
 Configure flags for compiling downstream packages.
 }
+\details{
+If the \code{RIGRAPHLIB_<OPT>} environment variable is set (where \code{<OPT>} is replaced by \code{opt}),
+the contents of that variable will be printed by this function,
+regardless of any other settings.
+
+If the \code{RIGRAPHLIB_USE_SYSTEM_LIBRARY} environment was set to 1 during \pkg{Rigraphlib} installation or is currently set to 1.
+this function will print the output of \code{pkg-config igraph} relevant to the requested \code{opt}.
+If \code{igraph} cannot be found by \code{pkg-config}, an error is thrown.
+
+Otherwise, this function will print flags to link to the binaries generated from the vendored \pkg{igraph} source.
+
+If any of the above environment variables are specified,
+the version of the corresponding \pkg{igraph} instance should be consistent with that of the vendored \pkg{igraph} source.
+See \code{\link[Rigraphlib]{version}(TRUE)} for the expected version of the \pkg{igraph} library.
+}
 \examples{
 pkgconfig("PKG_CPPFLAGS")
 pkgconfig("PKG_LIBS")

@@ -5,4 +5,5 @@
 *.html
 _build
 inst/igraph
+inst/IGRAPH_VERSION
 sources.tar.gz

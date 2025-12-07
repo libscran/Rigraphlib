@@ -3,7 +3,7 @@ title: Packaging the igraph C library
 author:
 - name: Aaron Lun
   email: infinite.monkeys.with.keyboards@gmail.com
-date: "Revised: March 4, 2025"
+date: "Revised: December 7, 2025"
 output:
   BiocStyle::html_document
 package: Rigraphlib
@@ -29,7 +29,7 @@ and cannot easily be modified to use the usual `r CRANpkg("igraph")` R package.
 By vendoring in the source code, we also reduce our susceptibility to out-of-release-schedule changes in results due to `r CRANpkg("igraph")` updates.
 This also allows developers to access functionality that might yet not be available from the R bindings.
 
-Currently, this package contains version 0.10.15 of the C **igraph** library.
+Currently, this package contains version `r Rigraphlib::version(TRUE)` of the C **igraph** library.
 
 # Quick start
 
@@ -57,10 +57,10 @@ If the `RIGRAPHLIB_PKG_CPPFLAGS` environment is set, its contents will be printe
 Similarly, if the `RIGRAPHLIB_PKG_LIBS` environment is set, its contents will be printed by `pkgconfig("PKG_LIBS")`.
 These take precedence over any other options or environment variables.
 
-If the `RIGRAPHLIB_USE_SYSTEM_LIBRARY` environment variable is set to 1,
-`pkgconfig()` will instead call `pkg-config igraph` to determine the relevant flags to link to the system **igraph** installation.
+If the `RIGRAPHLIB_USE_SYSTEM_LIBRARY` environment variable is set to 1 during or after installation of `r self`,
+`pkgconfig()` will instead call `pkg-config igraph` to link to the system **igraph** installation.
 In addition, if this environment variable is set during `r self` installation,
-the vendored source code will not be compiled unless the `RIGRAPH_FORCE_BUILD` environment variable is set to 1.
+the vendored source code will not be compiled unless the `RIGRAPHLIB_FORCE_BUILD` environment variable is set to 1.
 
 In both cases, the version of **igraph** referenced by any custom flags should be consistent with the version of the vendored **igraph** source.
 This ensures that downstream packages based on `r self` will build and run as expected.
